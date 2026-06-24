@@ -22,5 +22,5 @@ An end-to-end Data Analytics project showcasing the journey from raw data cleani
 - `Aryan_Portfolio_Deck.html`: Detailed project presentation.
 
 ## 🔗 Connect With Me
-- [LinkedIn Profile Link yahan daalo]
-- [GitHub Profile Link]
+- [https://www.linkedin.com/in/aryan-mishra-92764b31b?utm_source=share_via&utm_content=profile&utm_medium=member_android]
+- [ https://github.com/champthe324-max]
