@@ -1,22 +1,26 @@
-# Ecommerce Sales Analysis Project 🚀
+# Ecommerce Sales Analysis 🚀
 
-Is project mein maine ek Ecommerce dataset ka use karke end-to-end data analysis kiya hai, jisme Python, SQL, aur Power BI ka use hua hai.
+An end-to-end Data Analytics project showcasing the journey from raw data cleaning to actionable business insights.
+
+## 📊 Dashboard Preview
+![Dashboard](dashboard_preview.png)
+
+## 🛠 Tech Stack
+- **Python**: Used for Data Cleaning, EDA (Exploratory Data Analysis), and handling missing values.
+- **SQL**: Used for data extraction, joining tables, and complex querying.
+- **Power BI**: Used for creating interactive visualizations and tracking KPIs (Sales, Profit, Trends).
+
+## 💡 Key Insights
+- **Top Performing Region**: [Apne analysis ke hisaab se likho, jaise: Western Region]
+- **Highest Profit Category**: [Likho, jaise: Technology/Furniture]
+- **Monthly Trend**: Sales peaked during [Month Name] due to seasonal demand.
 
 ## 📁 Project Structure
-- **Images/**: Python script se generate kiye gaye saare charts (`sales_by_region.png`, etc.)
-- **PowerBi/**: Interactive Power BI Dashboard (`.pbix` file)
-- **analysis_queries.sql**: Top business insights nikalne ke liye SQL queries
-- **cleaned_sales_data.csv**: Cleaned dataset jiske upar poori analysis hui hai
+- `cleaned_sales_data.csv`: The processed dataset.
+- `analysis_queries.sql`: SQL scripts used for data analysis.
+- `Ecommerce_Sales_Dashboard.pbix`: The Power BI report file.
+- `Aryan_Portfolio_Deck.html`: Detailed project presentation.
 
-## 🛠️ Tech Stack Used
-- **Data Cleaning & Visualization**: Python (Pandas, Matplotlib, Seaborn)
-- **Database Analysis**: MySQL Workbench
-- **Interactive Dashboard**: Power BI Desktop
-
-## 📊 Key Insights Found
-1. **Region Analysis**: Central region ne sabse zyada revenue generate kiya hai.
-2. **Monthly Trend**: Monthly Sales Trend analysis se seasonality ka pata chala ki kis month mein sales peak par hoti hain.
-3. **Product Performance**: Top 5 best-performing products aur unka profit margin SQL ke zariye nikala gaya.
-
-## 📈 Dashboard Preview
-![Dashboard Preview](Images/dashboard_preview.png)
+## 🔗 Connect With Me
+- [LinkedIn Profile Link yahan daalo]
+- [GitHub Profile Link]
