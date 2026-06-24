@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Mishra - Data Analysis Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. GLOBAL RESET & SCALING */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0a0a0a; display: grid; gap: 40px; place-items: center; padding: 50px 0; font-family: 'Urbanist', sans-serif; color: #fff; }
+
+        /* 1.1 SLIDE CONTAINER (1280x720 Fixed) */
+        .slide-container {
+            width: 1280px; height: 720px;
+            background-color: #000;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+            padding: 60px; border-radius: 0;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        /* ABSTRACT BACKGROUND DECORATION */
+        .slide-container::before {
+            content: ''; position: absolute; top: -20%; right: -10%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(222, 255, 154, 0.08) 0%, rgba(222, 255, 154, 0) 70%);
+            z-index: 0;
+        }
+
+        .slide-container::after {
+            content: ''; position: absolute; bottom: 40px; left: 60px; right: 60px;
+            height: 1px; background: linear-gradient(90deg, #deff9a 0%, rgba(222,255,154,0) 100%);
+            opacity: 0.3; z-index: 1;
+        }
+
+        /* 2. TYPOGRAPHY */
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; z-index: 2; }
+        h1 { font-size: 84px; line-height: 0.9; letter-spacing: -2px; }
+        h1 span { color: #deff9a; }
+        .slide-title { font-size: 58px; color: #f5f5f5; margin-bottom: 30px; border-left: 6px solid #deff9a; padding-left: 20px; }
+        p, li { font-size: 20px; line-height: 1.5; color: #daffde; font-weight: 300; z-index: 2; }
+        .highlight { color: #deff9a; font-weight: 700; }
+
+        /* 3. LAYOUT TOOLS */
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; z-index: 2; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        
+        /* IMAGE STYLING */
+        .image-wrapper { border-radius: 20px; overflow: hidden; border: 1px solid rgba(222, 255, 154, 0.2); height: 450px; width: 100%; position: relative; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .image-wrapper.contain img { object-fit: contain; background: #111; }
+
+        /* 4. COMPONENTS */
+        .tech-tile-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .tech-tile { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .tech-tile i { font-size: 40px; color: #deff9a; margin-bottom: 15px; }
+        
+        /* CHARTS */
+        .bar-container { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+        .bar-row { display: flex; align-items: center; gap: 20px; }
+        .bar-label { width: 150px; text-align: right; font-size: 16px; opacity: 0.8; }
+        .bar-track { flex-grow: 1; height: 35px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, #deff9a, #9affb2); display: flex; align-items: center; justify-content: flex-end; padding-right: 15px; color: #000; font-weight: 800; font-size: 14px; }
+
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .stat-card { text-align: center; background: rgba(222,255,154,0.05); padding: 40px; border-radius: 20px; border: 1px solid rgba(222,255,154,0.1); }
+        .stat-value { font-size: 50px; font-weight: 700; color: #deff9a; font-family: 'Space Grotesk'; }
+        .stat-label { font-size: 16px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
+
+        /* BLEED IMAGE LAYOUT */
+        .bleed-image-layout { padding: 0; display: grid; grid-template-columns: 45% 55%; align-items: stretch; }
+        .bleed-text { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+        .bleed-img { width: 100%; height: 720px; object-fit: cover; }
+
+        /* CONTACT STYLE */
+        .contact-box { margin-top: 50px; background: #deff9a; color: #000; padding: 20px 40px; border-radius: 50px; display: inline-flex; align-items: center; gap: 15px; font-weight: 700; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="content-area">
+        <p style="text-transform: uppercase; letter-spacing: 5px; color: #deff9a; font-weight: 700; margin-bottom: 20px;">Data Analyst Portfolio</p>
+        <h1>Ecommerce <span>Sales</span><br>Strategic Intelligence</h1>
+        <p style="margin-top: 30px; font-size: 26px; max-width: 800px; font-weight: 300;">An end-to-end analytical journey by <span class="highlight">Aryan Mishra</span> — transforming 50,000+ data points into actionable growth strategies.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">The Strategic <span>Core</span></h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>The objective was to dissect global sales performance and identify hidden revenue leakages. By leveraging a high-performance tech stack, I moved data from <span class="highlight">unstructured chaos</span> to <span class="highlight">predictive clarity</span>.</p>
+                <ul style="margin-top: 30px; list-style: none;">
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-circle-nodes" style="color: #deff9a; margin-right: 15px;"></i> Comprehensive ETL Pipeline implementation</li>
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-chart-pie" style="color: #deff9a; margin-right: 15px;"></i> Advanced Segment & Regional Profiling</li>
+                    <li><i class="fa-solid fa-bolt" style="color: #deff9a; margin-right: 15px;"></i> Real-time Business Intelligence Output</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/17686329708444922907" alt="Business Data Concept">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">The 4-Pillar <span>Stack</span></h2>
+    <div class="content-area">
+        <div class="tech-tile-grid">
+            <div class="tech-tile">
+                <i class="fa-brands fa-python"></i>
+                <h3>Python</h3>
+                <p>Pandas, Seaborn, Matplotlib for Rigorous EDA</p>
+            </div>
+            <div class="tech-tile">
+                <i class="fa-solid fa-database"></i>
+                <h3>SQL</h3>
+                <p>Complex Joins & High-Speed Querying</p>
+            </div>
+            <div class="tech-tile">
+                <i class="fa-solid fa-file-excel"></i>
+                <h3>Excel</h3>
+                <p>Manual Validation & Feature Engineering</p>
+            </div>
+            <div class="tech-tile" style="border: 1px solid #deff9a;">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Power BI</h3>
+                <p>Dynamic Visual Storytelling Hub</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Scientific <span>EDA</span> via Python</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/16195936255782173718" alt="Python Data Analysis">
+            </div>
+            <div>
+                <h3>Pandas / Seaborn / Matplotlib</h3>
+                <p>I utilized <span class="highlight">Pandas</span> to engineer 50k+ rows, performing complex lambda transformations and handling outlier detection with statistical precision.</p>
+                <p style="margin-top: 20px;">Using <span class="highlight">Seaborn & Matplotlib</span>, I uncovered deep-seated correlations between order velocity and shipping modes, creating heatmaps that revealed critical logistics bottlenecks.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">SQL Data <span>Warehousing</span></h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>The cleaned data was moved to a structured SQL environment to ensure ACID compliance and high-performance reporting.</p>
+                <div style="background: #111; padding: 25px; border-radius: 10px; margin-top: 25px; border: 1px solid #333;">
+                    <code style="color: #9affb2; font-size: 14px; font-family: 'Courier New';">
+                        -- Sample Query: Aggregating Performance<br>
+                        SELECT region, SUM(sales) AS total_revenue<br>
+                        FROM ecommerce_master_table<br>
+                        GROUP BY region<br>
+                        ORDER BY total_revenue DESC;
+                    </code>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/1459168645083090725" alt="SQL Schema Diagram">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">The <span>Excel</span> Logic Layer</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 40px;">Before final visualization, I implemented a manual feature engineering layer in Excel to validate complex business logic and create custom segment labels.</p>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background: #deff9a; color: #000;">
+                <th style="padding: 20px; text-align: left;">Functionality</th>
+                <th style="padding: 20px; text-align: left;">Impact</th>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 20px;">VLOOKUP & Power Query</td>
+                <td style="padding: 20px;">Merged disparate datasets for unified customer profiling.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 20px;">Manual Pivot Validation</td>
+                <td style="padding: 20px;">Ensured 100% data consistency across SQL and Power BI.</td>
+            </tr>
+            <tr>
+                <td style="padding: 20px;">Conditional Formatting</td>
+                <td style="padding: 20px;">Rapid identification of negative profit anomalies.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide7">
+    <div class="bleed-text">
+        <h2 style="font-size: 48px; margin-bottom: 20px;">Dynamic <span>Visual</span> Hub</h2>
+        <p>This is the final strategic interface created in <span class="highlight">Power BI</span>. It allows stakeholders to drill down into segments, categories, and dates with a single click.</p>
+        <div style="margin-top: 40px; display: flex; gap: 20px; opacity: 0.6;">
+            <i class="fa-solid fa-mouse-pointer"></i> Interactive Slicers
+            <i class="fa-solid fa-eye"></i> Instant Insights
+        </div>
+    </div>
+    <img class="bleed-img" src="http://googleusercontent.com/image_collection/image_retrieval/7932088067059508056" alt="Power BI Sales Dashboard Visualization">
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">High-Level <span>KPIs</span></h2>
+    <div class="content-area">
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-value">4.74M</div>
+                <div class="stat-label">Sum of Sales</div>
+            </div>
+            <div class="stat-card" style="background: rgba(154, 255, 178, 0.1);">
+                <div class="stat-value">663.7K</div>
+                <div class="stat-label">Sum of Profit</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">35K</div>
+                <div class="stat-label">Quantity Sold</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Segment <span>Composition</span></h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="height: 350px; width: 350px; border-radius: 50%; background: conic-gradient(#deff9a 0% 51.15%, #9affb2 51.15% 81.03%, #ffffff 81.03% 100%); position: relative; margin: 0 auto;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 220px; height: 220px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700;">TOTAL SALES</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 20px; height: 20px; background: #deff9a;"></div>
+                    <p>Consumer: <span class="highlight">51.15% (2.43M)</span></p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 20px; height: 20px; background: #9affb2;"></div>
+                    <p>Corporate: <span class="highlight">29.88% (1.42M)</span></p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 20px; height: 20px; background: #ffffff;"></div>
+                    <p>Home Office: <span class="highlight">18.96% (0.9M)</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Regional <span>Dominance</span></h2>
+    <div class="content-area">
+        <div class="bar-container">
+            <div class="bar-row">
+                <div class="bar-label">Central</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 100%;">1.0M+</div></div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">South</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 60%;">0.6M</div></div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">North</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 50%;">0.5M</div></div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">Oceania</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 40%;">0.4M</div></div>
+            </div>
+        </div>
+        <p style="margin-top: 40px; text-align: center; font-style: italic; opacity: 0.7;">Central region exhibits the highest sales concentration, driving over 25% of global revenue.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Final <span>Insights</span></h2>
+    <div class="content-area">
+        <div class="tech-tile-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="tech-tile" style="text-align: left;">
+                <span style="font-size: 40px; font-weight: 800; color: #deff9a;">01</span>
+                <h3 style="margin-top: 10px;">Market Lead</h3>
+                <p>The Consumer segment is the primary engine of growth; marketing spend should be focused here.</p>
+            </div>
+            <div class="tech-tile" style="text-align: left;">
+                <span style="font-size: 40px; font-weight: 800; color: #deff9a;">02</span>
+                <h3 style="margin-top: 10px;">Central Hub</h3>
+                <p>Logistics operations in the Central region should be expanded to accommodate 1.0M+ volume.</p>
+            </div>
+            <div class="tech-tile" style="text-align: left;">
+                <span style="font-size: 40px; font-weight: 800; color: #deff9a;">03</span>
+                <h3 style="margin-top: 10px;">Profitability</h3>
+                <p>Technology category (filters applied) shows the highest average profit per order velocity.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <div class="content-area" style="text-align: center;">
+        <h2 style="font-size: 60px;">Let's <span>Connect</span></h2>
+        <p style="font-size: 30px; margin-top: 20px;">Building data-driven futures with precision.</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Aryan Mishra | Data Analyst</p>
+        
+        <a href="https://www.linkedin.com/in/aryan-mishra-92764b31b" class="contact-box" target="_blank">
+            <i class="fa-brands fa-linkedin"></i> linkedin.com/in/aryan-mishra
+        </a>
+        
+        <div style="margin-top: 60px; display: flex; justify-content: center; gap: 40px; opacity: 0.3;">
+            <i class="fa-brands fa-python fa-3x"></i>
+            <i class="fa-solid fa-database fa-3x"></i>
+            <i class="fa-solid fa-chart-line fa-3x"></i>
+            <i class="fa-solid fa-file-excel fa-3x"></i>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
